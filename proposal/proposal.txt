@@ -1,0 +1,13 @@
+Name - Christopher Meehan
+
+Stack - MERN
+
+GitHub Repo Link - 
+
+Project Name - Venue Review
+
+Project Description - I love going to different sporting events and experiencing a day at the park. Sometimes when going to a new stadium you're not sure what to expect. My solo project is a stadium review site. Users will be able to log in, review venues they've been to previously, and check out reviews of other venues that they are planning on visiting.
+
+MVP features - Login and Registration components. Dashboard displaying all stadiums with overall review score. A profile page displaying user's reviews. A Stadium page displaying stadium information, reviews of that stadium, and a review form for that stadium. An edit review page for a user to edit a specific stadium review. 
+
+Bonus Features - Working Login/Registration with validations and implementation of some Bootstrap/MaterialUI
