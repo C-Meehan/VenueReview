@@ -2,7 +2,7 @@ Name - Christopher Meehan
 
 Stack - MERN
 
-GitHub Repo Link - 
+GitHub Repo Link - https://github.com/C-Meehan/VenueReview
 
 Project Name - Venue Review
 
