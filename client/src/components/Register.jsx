@@ -5,7 +5,8 @@ import {Paper, FormControl, InputLabel, OutlinedInput, Button} from '@mui/materi
 
 const styles = {
     paper: {
-        width: "20rem", padding: "1rem"
+        width: "20rem", padding: "1rem",
+        opacity: 0.8
     },
     input: {
         marginBottom: "1rem"
@@ -18,6 +19,7 @@ const styles = {
 const Register = () => {
 
     const navigate = useNavigate();
+    const [error, setError] = useState({})
     const [userReg, setUserReg] = useState({
         firstName: "",
         lastName: "",
@@ -39,37 +41,49 @@ const Register = () => {
             })
             .catch(err => {
                 console.log(err)
+                console.log(err.response.data.error.errors);
+                setError(err.response.data.error);
             })
     }
 
     return (
-        <Paper elevation={24} style={styles.paper}>
-            <h2>Sign Up!</h2>
-            <form onSubmit={submitHandler}>
-                <FormControl variant="outlined" style={styles.input}>
-                    <InputLabel>First Name</InputLabel>
-                    <OutlinedInput type="text" name="firstName" value={userReg.firstName} onChange={onChangeHandler} />
-                </FormControl>
-                <FormControl variant="outlined" style={styles.input}>
-                    <InputLabel>Last Name</InputLabel>
-                    <OutlinedInput type="text" name="lastName" value={userReg.lastName} onChange={onChangeHandler} />
-                </FormControl>
-                <FormControl variant="outlined" style={styles.input}>
-                    <InputLabel>E-mail</InputLabel>
-                    <OutlinedInput type="email" name="email" value={userReg.email} onChange={onChangeHandler} />
-                </FormControl>
-                <FormControl variant="outlined" style={styles.input}>
-                    <InputLabel>Password</InputLabel>
-                    <OutlinedInput type="password" name="password" value={userReg.password} onChange={onChangeHandler} />
-                </FormControl>
-                <FormControl variant="outlined" style={styles.input}>
-                    <InputLabel>Confirm Password</InputLabel>
-                    <OutlinedInput type="password" name='confirmPassword' value={userReg.confirmPassword} onChange={onChangeHandler} />
-                </FormControl>
-                <Button type="submit" variant="contained" color="primary">Register</Button>
-                <p>Already have an account? <Link to={'/'}>Log in!</Link></p>
-            </form>
-        </Paper>
+        <div className="background-img">
+            <Paper elevation={24} style={styles.paper}>
+                <h2>Sign Up!</h2>
+                <form onSubmit={submitHandler}>
+                    <FormControl variant="outlined" style={styles.input}>
+                        {error?.errors?.firstName ? <p className='text-danger'>{error?.errors?.firstName?.message}</p> : ""}
+                        <InputLabel>First Name</InputLabel>
+                        <OutlinedInput type="text" name="firstName" value={userReg.firstName} onChange={onChangeHandler} />
+                    </FormControl>
+                    <FormControl variant="outlined" style={styles.input}>
+                        {error?.errors?.lastName ? <p className='text-danger'>{error?.errors?.lastName?.message}</p> : ""}
+                        <InputLabel>Last Name</InputLabel>
+                        <OutlinedInput type="text" name="lastName" value={userReg.lastName} onChange={onChangeHandler} />
+                    </FormControl>
+                    <FormControl variant="outlined" style={styles.input}>
+                        {
+                        error?.code ? <p className="text-danger">Email already in use</p> : 
+                        error?.errors?.email ? <p className='text-danger'>{error?.errors?.email?.message}</p> : null
+                        }
+                        <InputLabel>E-mail</InputLabel>
+                        <OutlinedInput type="email" name="email" value={userReg.email} onChange={onChangeHandler} />
+                    </FormControl>
+                    <FormControl variant="outlined" style={styles.input}>
+                        {error?.errors?.password ? <p className='text-danger'>{error?.errors?.password?.message}</p> : ""}
+                        <InputLabel>Password</InputLabel>
+                        <OutlinedInput type="password" name="password" value={userReg.password} onChange={onChangeHandler} />
+                    </FormControl>
+                    <FormControl variant="outlined" style={styles.input}>
+                        {error?.errors?.confirmPassword ? <p className='text-danger'>{error?.errors?.confirmPassword?.message}</p> : ""}
+                        <InputLabel>Confirm Password</InputLabel>
+                        <OutlinedInput type="password" name='confirmPassword' value={userReg.confirmPassword} onChange={onChangeHandler} />
+                    </FormControl>
+                    <Button type="submit" variant="contained" color="primary">Register</Button>
+                    <p>Already have an account? <Link to={'/'}>Log in!</Link></p>
+                </form>
+            </Paper>
+        </div>
     )
 }
 

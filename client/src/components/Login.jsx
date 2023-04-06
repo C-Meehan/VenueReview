@@ -5,7 +5,9 @@ import {Paper, FormControl, InputLabel, OutlinedInput, Button} from '@mui/materi
 
 const styles = {
     paper: {
-        width: "20rem", padding: "1rem"
+        // display: "flex",
+        width: "18rem", padding: "1rem",
+        opacity: 0.8
     },
     input: {
         marginBottom: "1rem"
@@ -18,6 +20,7 @@ const styles = {
 const Login = () => {
 
     const navigate = useNavigate();
+    const [error, setError] = useState({})
     const [userLogin, setUserLogin] = useState({
         email: "",
         password: ""
@@ -35,26 +38,31 @@ const Login = () => {
                 navigate('/dashboard')
             })
             .catch(err => {
-                console.log(err);
+                console.log(err)
+                console.log(err.response.data.message);
+                setError(err.response.data)
             })
     }
 
     return (
-        <Paper elevation={24} style={styles.paper}>
-            <h2>Login Form</h2>
-            <form onSubmit={loginHandler}>
-                <FormControl variant="outlined" style={styles.input}>
-                    <InputLabel>Email</InputLabel>
-                    <OutlinedInput type="text" name="email" value={userLogin.email} onChange={onChangeHandler} />
-                </FormControl>
-                <FormControl variant="outlined" style={styles.input}>
-                    <InputLabel>Password</InputLabel>
-                    <OutlinedInput type="password" name="password" value={userLogin.password} onChange={onChangeHandler} />
-                </FormControl>
-                <Button type="submit" variant="contained" color="primary">Login</Button>
-                <p>Don't have an account? <Link to={'/register'}>Sign up!</Link></p>
-            </form>
-        </Paper>
+        <div className="background-img">
+            <Paper elevation={4} style={styles.paper}>
+                <h2>Login Form</h2>
+                <form onSubmit={loginHandler}>
+                    {error ? <p className="text-danger">{error.message}</p> : ""}
+                    <FormControl variant="outlined" style={styles.input}>
+                        <InputLabel>Email</InputLabel>
+                        <OutlinedInput type="text" name="email" value={userLogin.email} onChange={onChangeHandler} />
+                    </FormControl>
+                    <FormControl variant="outlined" style={styles.input}>
+                        <InputLabel>Password</InputLabel>
+                        <OutlinedInput type="password" name="password" value={userLogin.password} onChange={onChangeHandler} />
+                    </FormControl>
+                    <Button type="submit" variant="contained" color="primary">Login</Button>
+                    <p>Don't have an account? <Link to={'/register'}>Sign up!</Link></p>
+                </form>
+            </Paper>
+        </div>
     )
 }
 

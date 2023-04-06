@@ -9,18 +9,18 @@ module.exports = {
     registerUser: async (req, res) => {
         try {
             // Check if the email that was entered in reg form is already in DB
-            const potentialUser = await User.findOne({email: req.body.email});
-            if (potentialUser) {
-                res.status(400).json({message: "That email already exists"})
-            }
-            else {
+            // const potentialUser = await User.findOne({email: req.body.email});
+            // if (potentialUser) {
+            //     res.status(400).json({message: "That email already exists"})
+            // }
+            // else {
                 // Create the user
                 const newUser = await User.create(req.body);
                 const UserToken = jwt.sign({_id: newUser._id, email: newUser.email}, secret, {expiresIn: '1d'})
-                console.log(UserToken);
+                // console.log(UserToken);
                 //Sending back the logged in user
                 res.status(201).cookie('userToken', UserToken, {httpOnly: true}).json({message: 'User logged in', user: newUser})
-            }
+            // }
         }
         catch (err) {
             console.log(err)
@@ -39,7 +39,7 @@ module.exports = {
                 if (passwordsMatch) {
                     console.log("HERE");
                     const userToken = jwt.sign({_id: user._id, email: user.email}, secret, {expiresIn: '1d'})
-                    console.log(userToken);
+                    // console.log(userToken);
                     //Sending back the logged in user
                     res.cookie("userToken", userToken, {httpOnly: true}).json({message: 'User logged in', user: user})
                 }

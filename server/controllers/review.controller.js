@@ -17,7 +17,8 @@ module.exports.getAllReviews = (req,res) => {
 
 module.exports.createReview = (req,res) => {
     // const user = jwt.verify(req.cookies.userToken,SECRET);
-    Review.create({...req.body, creator: User._id, stadium: Stadium._id})
+    // Review.create({...req.body, creator: User._id, stadium: Stadium._id})
+    Review.create({...req.body})
         .then(newReview => {
             res.json({review: newReview})
         })
@@ -29,6 +30,14 @@ module.exports.createReview = (req,res) => {
 module.exports.getReviewByUser = (req, res) => {
     // const user = jwt.verify(req.cookies.userToken,SECRET);
     Review.find({creator: User._id})
+        .populate('creator', 'firstName lastName')
+        .then(review => res.json(review))
+        .catch(err => res.json(err))
+}
+
+module.exports.getReviewByStadium = (req, res) => {
+    // const user = jwt.verify(req.cookies.userToken,SECRET);
+    Review.find({stadium: req.params.id})
         .populate('creator', 'firstName lastName')
         .then(review => res.json(review))
         .catch(err => res.json(err))

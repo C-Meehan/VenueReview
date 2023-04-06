@@ -2,37 +2,41 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.background-img {
+  height: 800px;
+  background-image: url("./images/Truist-Park.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/*Css for NAVBAR*/
+.navbar {
+  justify-content: space-evenly;
+  background-color: darkcyan;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav-links {
+  /* color: white; */
+  width: 300px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-evenly;
+}
+
+.links {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.stadium-icon {
+  width: 40px;
+  height: auto;
+}
+/*End Css for NAVBAR*/
+
+
+.stadium-content {
+  display: flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.single-stadium {
+  display: flex;
 }
