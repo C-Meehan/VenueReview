@@ -6,4 +6,5 @@ module.exports = app => {
     app.get('/api/reviews/:id', ReviewController.getReviewByUser);
     //VVV This route used for component on bottom of stadium page for all stadium reviews
     app.get('/api/reviews/stadium/:id', ReviewController.getReviewByStadium);
+    app.delete('/api/reviews/:id', ReviewController.deleteReview);
 }

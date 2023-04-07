@@ -18,7 +18,7 @@ const styles = {
 }
 
 const ReviewForm = (props) => {
-
+    const {user, setUser, stadium, setStadium, reviews, setReviews} = props
     const [errors, setErrors] = useState([])
     const navigate = useNavigate();
 
@@ -28,7 +28,9 @@ const ReviewForm = (props) => {
         views: 1,
         atmosphere: 1,
         teamShop: 1,
-        additionalReview: ""
+        additionalReview: "",
+        // creator: user._id,
+        // stadium: stadium._id
     }) 
 
     const onChangeHandler = e => {
@@ -37,21 +39,26 @@ const ReviewForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
+        console.log("Handle submit", user._id)
+        console.log("Handle submit chris chris", stadium._id)
         // Add user redirect
-        if (!user.firstName) {
-            navigate('/')
-        }
-        axios.post("http://localhost:8000/api/reviews", review)
+        // if (!user.firstName) {
+        //     navigate('/')
+        // }
+        axios.post("http://localhost:8000/api/reviews", {...review, creator: user._id, stadium: stadium._id})
             .then(res => {
                 console.log(res.data)
-                // setConcessions(1);
-                // setParking(1);
-                // setViews(1);
-                // setAtmosphere(1);
-                // setTeamShop(1);
-                // setAdditionalReview("")
-                navigate('/dashboard');
+                
+                setReviews([...reviews, res.data.review])
+                navigate("/dashboard")
+                // setReview({
+                //     concessions: 1,
+                //     parking: 1,
+                //     views: 1,
+                //     atmosphere: 1,
+                //     teamShop: 1,
+                //     additionalReview: "",
+                // })
             })
             .catch(err => {
                 console.log(err.response.data.error.errors)
@@ -63,8 +70,6 @@ const ReviewForm = (props) => {
         <Paper elevation={4} style={styles.paper}>
             <h2>Review Stadium</h2>
             <form onSubmit={handleSubmit}>
-                <input type="hidden" name="userId" value={user._id} />
-                <input type="hidden" name="stadiumId" value={stadium._id} />
                 <FormControl variant="outlined" style={styles.input}>
                     {errors.concessions ? <p className="text-danger">{errors.concessions.message}</p> : ""}
                     <InputLabel>Concessions</InputLabel>

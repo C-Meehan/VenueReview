@@ -7,7 +7,10 @@ const styles = {
     paper: {
         // display: "flex",
         width: "18rem", padding: "1rem",
-        opacity: 0.8
+        height: "400px",
+        opacity: 0.8,
+        backgroundColor: "#978175",
+        filter: "brightness(1.5)"
     },
     input: {
         marginBottom: "1rem"
@@ -49,7 +52,7 @@ const Login = () => {
             <Paper elevation={4} style={styles.paper}>
                 <h2>Login Form</h2>
                 <form onSubmit={loginHandler}>
-                    {error ? <p className="text-danger">{error.message}</p> : ""}
+                    {error ? <p className="text-info">{error.message}</p> : ""}
                     <FormControl variant="outlined" style={styles.input}>
                         <InputLabel>Email</InputLabel>
                         <OutlinedInput type="text" name="email" value={userLogin.email} onChange={onChangeHandler} />

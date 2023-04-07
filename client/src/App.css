@@ -3,11 +3,41 @@
 }
 
 .background-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 800px;
   background-image: url("./images/Truist-Park.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+
+/*Dashboard CSS*/
+.allStadiums {
+  width: 100%;
+  /* justify-content: space-around; */
+}
+
+img {
+  width: 50%;
+  height: 50%;
+  display: inline-block;
+}
+
+
+
+/* .stadium-img {
+  width: 23%;
+  height: 300;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 5px solid black;
+  box-sizing: border-box;
+  flex: 25%;
+} */
+
+/*End Dashboard CSS*/
+
 
 /*Css for NAVBAR*/
 .navbar {

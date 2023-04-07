@@ -6,13 +6,14 @@ import {Paper, FormControl, InputLabel, OutlinedInput, Button} from '@mui/materi
 const styles = {
     paper: {
         width: "20rem", padding: "1rem",
-        opacity: 0.8
+        opacity: 0.8,
+        backgroundColor: "#978175"
     },
     input: {
-        marginBottom: "1rem"
+        marginBottom: "1rem",
     },
     button: {
-        width: "100%"
+        width: "100%",
     }
 }
 
@@ -52,30 +53,30 @@ const Register = () => {
                 <h2>Sign Up!</h2>
                 <form onSubmit={submitHandler}>
                     <FormControl variant="outlined" style={styles.input}>
-                        {error?.errors?.firstName ? <p className='text-danger'>{error?.errors?.firstName?.message}</p> : ""}
+                        {error?.errors?.firstName ? <p className='text-info'>{error?.errors?.firstName?.message}</p> : ""}
                         <InputLabel>First Name</InputLabel>
                         <OutlinedInput type="text" name="firstName" value={userReg.firstName} onChange={onChangeHandler} />
                     </FormControl>
                     <FormControl variant="outlined" style={styles.input}>
-                        {error?.errors?.lastName ? <p className='text-danger'>{error?.errors?.lastName?.message}</p> : ""}
+                        {error?.errors?.lastName ? <p className='text-info'>{error?.errors?.lastName?.message}</p> : ""}
                         <InputLabel>Last Name</InputLabel>
                         <OutlinedInput type="text" name="lastName" value={userReg.lastName} onChange={onChangeHandler} />
                     </FormControl>
                     <FormControl variant="outlined" style={styles.input}>
                         {
-                        error?.code ? <p className="text-danger">Email already in use</p> : 
-                        error?.errors?.email ? <p className='text-danger'>{error?.errors?.email?.message}</p> : null
+                        error?.code ? <p className="text-info">Email already in use</p> : 
+                        error?.errors?.email ? <p className='text-info'>{error?.errors?.email?.message}</p> : null
                         }
                         <InputLabel>E-mail</InputLabel>
                         <OutlinedInput type="email" name="email" value={userReg.email} onChange={onChangeHandler} />
                     </FormControl>
                     <FormControl variant="outlined" style={styles.input}>
-                        {error?.errors?.password ? <p className='text-danger'>{error?.errors?.password?.message}</p> : ""}
+                        {error?.errors?.password ? <p className='text-info'>{error?.errors?.password?.message}</p> : ""}
                         <InputLabel>Password</InputLabel>
                         <OutlinedInput type="password" name="password" value={userReg.password} onChange={onChangeHandler} />
                     </FormControl>
                     <FormControl variant="outlined" style={styles.input}>
-                        {error?.errors?.confirmPassword ? <p className='text-danger'>{error?.errors?.confirmPassword?.message}</p> : ""}
+                        {error?.errors?.confirmPassword ? <p className='text-info'>{error?.errors?.confirmPassword?.message}</p> : ""}
                         <InputLabel>Confirm Password</InputLabel>
                         <OutlinedInput type="password" name='confirmPassword' value={userReg.confirmPassword} onChange={onChangeHandler} />
                     </FormControl>

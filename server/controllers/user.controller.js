@@ -61,6 +61,18 @@ module.exports = {
         res.clearCookie('userToken').json({message: 'User is logged out'})
     },
 
+    //Get logged in user
+    getLogged: async (req,res) => {
+        try {
+            const user = jwt.verify(req.cookies.userToken, secret);
+            const currentUser = await User.findOne({_id: user._id});
+            res.json(currentUser);
+        }
+        catch(err) {
+            res.json({errors: 'failed to get logged user'})
+        }
+    },
+
     //Get all users
     findAllUsers: (req, res) => {
         User.find()

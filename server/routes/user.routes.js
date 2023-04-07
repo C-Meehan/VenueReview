@@ -6,4 +6,5 @@ module.exports = app => {
     app.post('/api/logout', UserController.logout)
     app.get('/api/allusers', UserController.findAllUsers)
     app.get('/api/getuser/:id', UserController.findOneUser)
+    app.get('/api/currentuser', UserController.getLogged)
 }

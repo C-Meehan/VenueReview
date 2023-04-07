@@ -23,6 +23,7 @@ module.exports.createReview = (req,res) => {
             res.json({review: newReview})
         })
         .catch(err => {
+            console.log("I am in my create review error ", err)
             res.json({message: "Something went wrong", error: err})
         })
 }
@@ -30,7 +31,7 @@ module.exports.createReview = (req,res) => {
 module.exports.getReviewByUser = (req, res) => {
     // const user = jwt.verify(req.cookies.userToken,SECRET);
     Review.find({creator: User._id})
-        .populate('creator', 'firstName lastName')
+        .populate('stadium', 'teamName stadiumName')
         .then(review => res.json(review))
         .catch(err => res.json(err))
 }

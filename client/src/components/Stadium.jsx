@@ -3,21 +3,23 @@ import axios from 'axios'
 import {useParams, useNavigate} from 'react-router-dom'
 import Navbar from './Navbar'
 
-const Stadium = () => {
+const Stadium = (props) => {
 
-    const [stadium, setStadium] = useState({})
-    const {id} = useParams();
-    const navigate = useNavigate();
+    const {stadium} = props;
 
-    useEffect(() => {
-        console.log(id);
-        axios.get("http://localhost:8000/api/stadiums/" + id)
-            .then(res => {
-                console.log(res.data)
-                setStadium(res.data);
-            })
-            .catch(err => console.log(err))
-    })
+    // const [stadium, setStadium] = useState({})
+    // const {id} = useParams();
+    // const navigate = useNavigate();
+
+    // useEffect(() => {
+    //     console.log(id);
+    //     axios.get("http://localhost:8000/api/stadiums/" + id)
+    //         .then(res => {
+    //             console.log(res.data)
+    //             setStadium(res.data);
+    //         })
+    //         .catch(err => console.log(err))
+    // }, [])
 
     return (
         <div>
