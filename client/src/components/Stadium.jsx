@@ -24,8 +24,8 @@ const Stadium = (props) => {
     return (
         <div>
             {/* <Navbar/> */}
-            <div className="stadium-content">
-                <div className="stadium-info">
+            <div>
+                <div className="stadium-card">
                     <h2>{stadium.teamName}</h2>
                     <h2>{stadium.league} {stadium.division}</h2>
                     <h2>Stadium Name: {stadium.stadiumName}</h2>
@@ -33,7 +33,7 @@ const Stadium = (props) => {
                     <h2>Capacity: {stadium.capacity}</h2>
                     <h2>Founded: {stadium.founded}</h2>
                     {
-                        (stadium && stadium.stadiumImage) ? <img src={require(`../images/${stadium?.stadiumImage}`)} alt="Picture of stadium" /> : null
+                        (stadium && stadium.stadiumImage) ? <img className="stadium-img" src={require(`../images/${stadium?.stadiumImage}`)} alt="Picture of stadium" /> : null
                     }
                     {/* <img src={require(`../images/${stadium?.stadiumImage}`)} alt="Picture of stadium" /> */}
                 </div>

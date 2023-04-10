@@ -29,9 +29,11 @@ module.exports.createReview = (req,res) => {
 }
 
 module.exports.getReviewByUser = (req, res) => {
-    // const user = jwt.verify(req.cookies.userToken,SECRET);
-    Review.find({creator: User._id})
-        .populate('stadium', 'teamName stadiumName')
+    const user = jwt.verify(req.cookies.userToken,SECRET);
+    console.log(user)
+    console.log(user._id)
+    Review.find({creator: user._id})
+        .populate('stadium', 'teamName stadiumName stadiumImage')
         .then(review => res.json(review))
         .catch(err => res.json(err))
 }
@@ -42,6 +44,12 @@ module.exports.getReviewByStadium = (req, res) => {
         .populate('creator', 'firstName lastName')
         .then(review => res.json(review))
         .catch(err => res.json(err))
+}
+
+module.exports.getOneReview = (req, res) => {
+    Review.findById(req.params.id)
+        .then(review => res.json(review))
+        .catch(err => res.json(err));
 }
 
 module.exports.updateReview = (req,res) => {

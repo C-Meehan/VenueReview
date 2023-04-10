@@ -3,8 +3,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
+import SingleStadium from './views/SingleStadium';
+import Profile from './components/Profile';
+import EditReview from './components/EditReview';
 // import Stadium from './components/Stadium';
-import SingleStadium from './views/SingleStadium'
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path='/register' element={<Register/>}/>
           <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path='/stadiums/:id' element={<SingleStadium/>}/>
+          <Route path='/profile/:id' element={<Profile/>}/>
+          <Route path='/review/edit/:id' element={<EditReview/>}/>
         </Routes>
       </BrowserRouter>
     </div>

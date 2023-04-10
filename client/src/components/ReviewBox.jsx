@@ -8,7 +8,7 @@ const ReviewBox = (props) => {
     const {id, reviews, setReviews} = props
 
     useEffect(() => {
-        console.log("Stadium id for reviews " + id);
+        // console.log("Stadium id for reviews " + id);
         axios.get("http://localhost:8000/api/reviews/stadium/" + id)
             .then(res => {
                 console.log("This is my get request for review", res.data)

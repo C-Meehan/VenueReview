@@ -10,20 +10,21 @@ const SingleStadium = () => {
     
     const {id} = useParams();
     const [stadium, setStadium] = useState([]);
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState({});
     const [reviews, setReviews] = useState([]);
 
-    useEffect(() => {
-        axios.get('http://localhost:8000/api/currentuser', {withCredentials: true})
-            .then(res => {
-                console.log("logged user " + res.data.firstName)
-                setUser(res.data);
-            })
-            .catch(err => {
-                console.log("current user error: " + err)
-                setUser({})
-            });
-    }, []);
+    //Storing current user
+    // useEffect(() => {
+    //     axios.get('http://localhost:8000/api/currentuser', {withCredentials: true})
+    //         .then(res => {
+    //             console.log("logged user " + res.data.firstName)
+    //             setUser(res.data);
+    //         })
+    //         .catch(err => {
+    //             console.log("current user error: " + err)
+    //             setUser({})
+    //         });
+    // }, []);
 
     //useEffect to populate stadium info
     useEffect(() => {
@@ -38,7 +39,7 @@ const SingleStadium = () => {
 
     return (
         <div>
-            <Navbar/>
+            <Navbar user={user} setUser={setUser}/>
             <div className="single-stadium">
                 <Stadium stadium={stadium} setStadium={setStadium}/>
                 <ReviewForm stadium={stadium} setStadium={setStadium} user={user} setUser={setUser} reviews={reviews} setReviews={setReviews}/>
