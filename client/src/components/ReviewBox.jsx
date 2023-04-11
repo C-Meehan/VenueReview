@@ -1,11 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+// import { useParams, useNavigate } from 'react-router-dom';
+import './stadium.css'
 
 
 const ReviewBox = (props) => {
 
     const {id, reviews, setReviews} = props
+
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+        });
+    }
 
     useEffect(() => {
         // console.log("Stadium id for reviews " + id);
@@ -22,9 +32,10 @@ const ReviewBox = (props) => {
             {
                 (reviews) ? 
                     reviews.map((review, index) => (
-                    <div key={index}>
-                        <p>{review.additionalReview}</p>
-                        <p>{review.creator.firstName} {review.creator.lastName}</p>
+                    <div className="review-box-single-review" key={index}>
+                        <p className="review-date">Posted on: {formatDate(review.createdAt)}</p>
+                        <p className="additional-review">{review.additionalReview}</p>
+                        <p className="reviewer-name">{review.creator.firstName} {review.creator.lastName}</p>
                     </div>
                 )) : null
             }

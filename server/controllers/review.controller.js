@@ -24,7 +24,7 @@ module.exports.createReview = (req,res) => {
         })
         .catch(err => {
             console.log("I am in my create review error ", err)
-            res.json({message: "Something went wrong", error: err})
+            res.status(400).json({message: "Jang's errors", error: err})
         })
 }
 
@@ -48,15 +48,16 @@ module.exports.getReviewByStadium = (req, res) => {
 
 module.exports.getOneReview = (req, res) => {
     Review.findById(req.params.id)
+        .populate('stadium', 'stadiumName')
         .then(review => res.json(review))
         .catch(err => res.json(err));
 }
 
 module.exports.updateReview = (req,res) => {
-    Review.findByIdAndUpdate(req.parmas.id, req.body, {new: true, runValidators: true})
+    Review.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true})
         .then(updatedReview => res.json(updatedReview))
         .catch(err => {
-            res.json({message: "Something went wrong", error: err})
+            res.status(400).json({message: "Something went wrong", error: err})
         })
 }
 

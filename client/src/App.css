@@ -59,12 +59,24 @@ a:active {
   box-sizing: border-box;
   text-align: center;
   background-color: whitesmoke;
-  box-shadow: 0px 0px 10px rgba(209, 103, 23, 0.5);
+  box-shadow: 0px 0px 10px rgb(66, 78, 98, 1);
   transition: box-shadow 300ms ease-in-out;
+  cursor: pointer;
+}
+
+.stadium-card a{
+  font-size: 1.9rem;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    font-family: Inter, system-ui;
+    --tw-text-opacity: 1;
+    color: rgba(36, 62, 99, var (--tw-text-opacity));
+    color: rgba(36, 62, 99, var(--tw-text-opacity));
 }
 
 .stadium-card:hover {
-  box-shadow: 0px 0px 20px rgba(209, 103, 23, 1);
+  box-shadow: 0px 0px 20px rgb(66, 78, 98, 1);
 }
 
 .stadium-img {
@@ -134,6 +146,7 @@ a:active {
   background-color: #424E62;
   /* background-color: rgb(54, 121, 209); */
   padding: 20px 12px;
+  box-shadow: rgba(23, 48, 73, 0.12) 0px 4px 24px
 }
 
 .title {
@@ -142,7 +155,7 @@ a:active {
   letter-spacing: 0.025em;
   font-family: Inter, system-ui;
   --tw-text-opacity: 1;
-  color: rgba(0, 0, 0, var(--tw-text-opacity));
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -159,31 +172,32 @@ a:active {
 .links {
   font-size: 16px;
   font-weight: bold;
-  color: black;
+  color: white;
 }
 
 .stadium-icon {
   width: 60px;
   margin-left: 8%;
+  filter: invert(1);
 }
 
 .logout-btn{
-  border-radius: 12px;
-  border: 1px solid black;
-  width: 80px;
-  height: 30px;
-  font-size: 12px;
-  background-color: rgb(54, 121, 209);
-  color: black;
+  border-radius: 8px;
+  border: 1px solid white;
+  width: 120px;
+  height: 40px;
+  font-size: 14px;
+  background-color: transparent;
+  color: white;
   cursor: pointer;
   transition: all 150ms ease-in-out;
   font-weight: bold;
 }
 
 .logout-btn:hover {
-  background-color: black;
-  color: white;
-  border: 1px solid rgb(54, 121, 209);
+  background-color: white;
+  color: #424E62;
+  border: 1px solid white;
 }
 /*End Css for NAVBAR*/
 
@@ -192,6 +206,3 @@ a:active {
   display: flex;
 }
 
-.single-stadium {
-  display: flex;
-}

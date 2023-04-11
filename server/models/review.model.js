@@ -38,7 +38,7 @@ const ReviewSchema = new mongoose.Schema({
     },
     additionalReview: {
         type: String,
-        required: true,
+        // required: [true, "Additional review required"],
         minlength: [5, "Additional review must be at least 5 characters"]
     },
     creator: {
