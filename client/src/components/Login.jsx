@@ -48,7 +48,7 @@ const Login = () => {
     }
 
     return (
-        <div className="background-img">
+        <div className="background-img background-sizing">
             <Paper elevation={4} style={styles.paper}>
                 <h2>Login Form</h2>
                 <form onSubmit={loginHandler}>
