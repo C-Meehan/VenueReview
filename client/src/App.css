@@ -28,6 +28,7 @@ a:active {
 
 .background-img {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   /* height: auto; */
@@ -35,6 +36,16 @@ a:active {
   background-repeat: no-repeat;
   background-size: cover;
   /* background-position: center; */
+}
+
+.log-reg-header {
+  font-size: 50px;
+  font-weight: bold;
+  opacity: .7;
+  color: white;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid white;
 }
 
 /*Dashboard CSS*/

@@ -12,7 +12,7 @@ const Profile = () => {
     const [user, setUser] = useState({})
     const [reviews, setReviews] = useState([]);
 
-    console.log("GRay want to see this", reviews)
+    // console.log("GRay want to see this", reviews)
     useEffect(() => {
         // axios.get("http://localhost:8000/api/reviews/" + id)
         axios.get("http://localhost:8000/api/reviews/user", {withCredentials: true})

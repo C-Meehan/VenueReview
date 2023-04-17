@@ -50,6 +50,7 @@ const Register = () => {
 
     return (
         <div className="background-img background-sizing">
+            <h1 className="log-reg-header">Venue Review</h1>
             <Paper elevation={24} style={styles.paper}>
                 <h2>Sign Up!</h2>
                 <form onSubmit={submitHandler}>

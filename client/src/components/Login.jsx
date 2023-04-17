@@ -49,8 +49,9 @@ const Login = () => {
 
     return (
         <div className="background-img background-sizing">
+            <h1 className="log-reg-header">Welcome back to Venue Review</h1>
             <Paper elevation={4} style={styles.paper}>
-                <h2>Login Form</h2>
+                <h2>Login</h2>
                 <form onSubmit={loginHandler}>
                     {error ? <p className="text-info">{error.message}</p> : ""}
                     <FormControl variant="outlined" style={styles.input}>
