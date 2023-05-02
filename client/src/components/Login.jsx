@@ -37,12 +37,12 @@ const Login = () => {
         e.preventDefault();
         axios.post('http://localhost:8000/api/login', userLogin, {withCredentials: true})
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 navigate('/dashboard')
             })
             .catch(err => {
-                console.log(err)
-                console.log(err.response.data.message);
+                // console.log(err)
+                // console.log(err.response.data.message);
                 setError(err.response.data)
             })
     }

@@ -77,7 +77,6 @@ const EditReview = (props) => {
 
         axios.put('http://localhost:8000/api/reviews/edit/' + id, review)
             .then(res => {
-                console.log("TAs are helpiong",res)
                 // console.log("I need this to navigate",user._id)
                 navigate("/profile/" + user._id)
             })

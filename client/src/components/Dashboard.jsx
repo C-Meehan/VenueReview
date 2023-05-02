@@ -2,8 +2,8 @@ import '../App.css';
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Link, useNavigate, useParams} from 'react-router-dom';
-// import pirates from '../images/PNC-Park.jpg'
 import Navbar from '../components/Navbar'
+// import pirates from '../images/PNC-Park.jpg'
 
 const Dashboard = () => {
 
@@ -50,7 +50,7 @@ const Dashboard = () => {
                 {
                     stadiumList.map((stadium, index) => (
                         <div className="stadium-card" key={index}>
-                            <h2>{stadium.teamName}</h2>
+                            <h2 className="team-name">{stadium.teamName}</h2>
                             <h2 className='stadium-link'><Link to={`/stadiums/${stadium._id}`}>{stadium.stadiumName}</Link></h2>
                             <img className="stadium-img" src={require(`../images/${stadium.stadiumImage}`)} alt="Picture of stadium" />
                         </div>

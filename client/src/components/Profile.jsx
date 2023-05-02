@@ -12,7 +12,6 @@ const Profile = () => {
     const [user, setUser] = useState({})
     const [reviews, setReviews] = useState([]);
 
-    // console.log("GRay want to see this", reviews)
     useEffect(() => {
         // axios.get("http://localhost:8000/api/reviews/" + id)
         axios.get("http://localhost:8000/api/reviews/user", {withCredentials: true})
@@ -50,20 +49,20 @@ const Profile = () => {
                 reviews.map((review, index) => (
                     <div className="profile-main-review-container" key={index}>
                         <div className="left-side-review-info">
-                            <p>Concessions: <Rating name="concessions" defaultValue={review.concessions} precision={0.5} value={review.concessions} readOnly/></p>
-                            <p>Parking: <Rating name="parking" defaultValue={review.parking} precision={0.5} value={review.parking} readOnly/></p>
-                            <p>Views: <Rating name="views" defaultValue={review.views} precision={0.5} value={review.views} readOnly/></p>
-                            <p>Team Shop: <Rating name="teamShop" defaultValue={review.teamShop} precision={0.5} value={review.teamShop} readOnly/></p>
-                            <p>Atmosphere: <Rating name="atmosphere" defaultValue={review.atmosphere} precision={0.5} value={review.atmosphere} readOnly/></p>
-                            <p>Additional Review: {review.additionalReview}</p>
+                            <p className="review-rating">Concessions: <Rating name="concessions" defaultValue={review.concessions} precision={0.5} value={review.concessions} readOnly/></p>
+                            <p className="review-rating">Parking: <Rating name="parking" defaultValue={review.parking} precision={0.5} value={review.parking} readOnly/></p>
+                            <p className="review-rating">Views: <Rating name="views" defaultValue={review.views} precision={0.5} value={review.views} readOnly/></p>
+                            <p className="review-rating">Team Shop: <Rating name="teamShop" defaultValue={review.teamShop} precision={0.5} value={review.teamShop} readOnly/></p>
+                            <p className="review-rating">Atmosphere: <Rating name="atmosphere" defaultValue={review.atmosphere} precision={0.5} value={review.atmosphere} readOnly/></p>
+                            <p className="review-rating">Additional Review: {review.additionalReview}</p>
                             <div className="edit-delete-buttons">
                                 {
                                     (review.creator == user._id ? 
-                                        <Link to={`/review/edit/${review._id}`}><button className="btn btn-outline-success edit-button">Edit</button></Link> : "")
+                                        <Link to={`/review/edit/${review._id}`}><button className="edit-button">Edit</button></Link> : "")
                                     }
                                 {
                                     (review.creator == user._id ? 
-                                        <button className="btn btn-outline-danger edit-button" onClick={(e) => {deleteReview(review._id)}}>Delete</button> : "")
+                                        <button className="delete-button" onClick={(e) => {deleteReview(review._id)}}>Delete</button> : "")
                                     }
                             </div>
                         </div>
