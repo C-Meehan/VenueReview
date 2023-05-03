@@ -42,16 +42,16 @@ const SingleStadium = () => {
         <div>
             <Navbar user={user} setUser={setUser} />
             <div className="container">
-            <div className="stadium-card-single-stadium jang">
-                <Stadium stadium={stadium} setStadium={setStadium} />
-            </div>
-            <div className="review-form-container">
-                <ReviewForm stadium={stadium} setStadium={setStadium} user={user} setUser={setUser} reviews={reviews} setReviews={setReviews}/>
-                <div className="review-box">
-                    <ReviewBox id={id} reviews={reviews} setReviews={setReviews} /> 
+                <div className="stadium-card-single-stadium jang">
+                    <Stadium stadium={stadium} setStadium={setStadium} />
+                </div>
+                <div className="review-form-container">
+                    <ReviewForm stadium={stadium} setStadium={setStadium} user={user} setUser={setUser} reviews={reviews} setReviews={setReviews}/>
+                    <div className="review-box">
+                        <ReviewBox id={id} reviews={reviews} setReviews={setReviews} /> 
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     );
 }

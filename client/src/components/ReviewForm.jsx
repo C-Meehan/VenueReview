@@ -74,7 +74,7 @@ const ReviewForm = (props) => {
     return (
         <div>
             <Paper className="reviewForm" elevation={4} style={styles.paper}>
-                <h2>Review Stadium</h2>
+                <h2 className='reviewForm-title'>Review Stadium</h2>
                 <form onSubmit={handleSubmit}>
                     <FormControl variant="outlined" style={styles.input}>
                         {errors.concessions ? <p className="text-danger">{errors.concessions.message}</p> : ""}

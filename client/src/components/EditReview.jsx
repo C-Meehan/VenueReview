@@ -7,8 +7,9 @@ import './stadium.css'
 
 const styles = {
     paper: {
-        // display: "flex",
-        width: "40%", padding: "1rem",
+        display: "flex",
+        justifyContent: "space-between",
+        width: "50%", padding: "1rem",
         opacity: 0.8,
         margin: "0 auto",
         marginTop: "20px",
@@ -96,42 +97,49 @@ const EditReview = (props) => {
             {console.log("Trying to get stadiumName from this review",review)}
             <h1 className="profile-name">{review?.stadium?.stadiumName}</h1>
             <Paper elevation={4} style={styles.paper}>
-            <h2>Edit your review</h2>
-            <form onSubmit={updateReview}>
-                <FormControl variant="outlined" style={styles.input}>
-                    {errors.concessions ? <p className="text-danger">{errors.concessions.message}</p> : ""}
-                    <InputLabel>Concessions</InputLabel>
-                    <Rating name="concessions" precision={0.5} value={!!review.concessions && review.concessions} onChange={onChangeHandler} />
-                    {/* <Rating name="concessions"  defaultValue={review.concessions} precision={0.5} value={review.concessions} onChange={onChangeHandler} /> */}
-                    {/* <OutlinedInput type="text" name="concessions" value={review.concessions} onChange={onChangeHandler} /> */}
-                </FormControl>
-                <FormControl variant="outlined" style={styles.input}>
-                    <InputLabel>Parking</InputLabel>
-                    <Rating name="parking" defaultValue={review.parking} precision={0.5} value={!!review.parking && review.parking} onChange={onChangeHandler} />
-                    {/* <OutlinedInput type="text" name="parking" value={review.parking} onChange={onChangeHandler} /> */}
-                </FormControl>
-                <FormControl variant="outlined" style={styles.input}>
-                    <InputLabel>Views</InputLabel>
-                    <Rating name="views" defaultValue={review.views} precision={0.5} value={!!review.views && review.views} onChange={onChangeHandler} />
-                    {/* <OutlinedInput type="text" name="views" value={review.views} onChange={onChangeHandler} /> */}
-                </FormControl>
-                <FormControl variant="outlined" style={styles.input}>
-                    <InputLabel>Atmosphere</InputLabel>
-                    <Rating name="atmosphere" defaultValue={review.atmosphere} precision={0.5} value={!!review.atmosphere && review.atmosphere} onChange={onChangeHandler} />
-                    {/* <OutlinedInput type="text" name="atmosphere" value={review.atmosphere} onChange={onChangeHandler} /> */}
-                </FormControl>
-                <FormControl variant="outlined" style={styles.input}>
-                    <InputLabel>Team Shop</InputLabel>
-                    <Rating name="teamShop" defaultValue={review.teamShop} precision={0.5} value={!!review.teamShop && review.teamShop} onChange={onChangeHandler} />
-                    {/* <OutlinedInput type="text" name="teamShop" value={review.teamShop} onChange={onChangeHandler} /> */}
-                </FormControl>
-                <FormControl variant="outlined" style={styles.input}>
-                    {errors.additionalReview ? <p className="text-danger">{errors.additionalReview.message}</p> : ""}
-                    <InputLabel>{review.additionalReview}</InputLabel>
-                    <OutlinedInput type="textarea" name="additionalReview" value={review.additionalReview} onChange={onChangeHandler} />
-                </FormControl>
-                <Button type="submit" variant="contained" color="primary">Submit Edited Review</Button>
-            </form>
+                <div className='edit-review-info'>
+                    <h2>Edit your review</h2>
+                    <form onSubmit={updateReview}>
+                        <FormControl variant="outlined" style={styles.input}>
+                            {errors.concessions ? <p className="text-danger">{errors.concessions.message}</p> : ""}
+                            <InputLabel>Concessions</InputLabel>
+                            <Rating name="concessions" precision={0.5} value={!!review.concessions && review.concessions} onChange={onChangeHandler} />
+                            {/* <Rating name="concessions"  defaultValue={review.concessions} precision={0.5} value={review.concessions} onChange={onChangeHandler} /> */}
+                            {/* <OutlinedInput type="text" name="concessions" value={review.concessions} onChange={onChangeHandler} /> */}
+                        </FormControl>
+                        <FormControl variant="outlined" style={styles.input}>
+                            <InputLabel>Parking</InputLabel>
+                            <Rating name="parking" defaultValue={review.parking} precision={0.5} value={!!review.parking && review.parking} onChange={onChangeHandler} />
+                            {/* <OutlinedInput type="text" name="parking" value={review.parking} onChange={onChangeHandler} /> */}
+                        </FormControl>
+                        <FormControl variant="outlined" style={styles.input}>
+                            <InputLabel>Views</InputLabel>
+                            <Rating name="views" defaultValue={review.views} precision={0.5} value={!!review.views && review.views} onChange={onChangeHandler} />
+                            {/* <OutlinedInput type="text" name="views" value={review.views} onChange={onChangeHandler} /> */}
+                        </FormControl>
+                        <FormControl variant="outlined" style={styles.input}>
+                            <InputLabel>Atmosphere</InputLabel>
+                            <Rating name="atmosphere" defaultValue={review.atmosphere} precision={0.5} value={!!review.atmosphere && review.atmosphere} onChange={onChangeHandler} />
+                            {/* <OutlinedInput type="text" name="atmosphere" value={review.atmosphere} onChange={onChangeHandler} /> */}
+                        </FormControl>
+                        <FormControl variant="outlined" style={styles.input}>
+                            <InputLabel>Team Shop</InputLabel>
+                            <Rating name="teamShop" defaultValue={review.teamShop} precision={0.5} value={!!review.teamShop && review.teamShop} onChange={onChangeHandler} />
+                            {/* <OutlinedInput type="text" name="teamShop" value={review.teamShop} onChange={onChangeHandler} /> */}
+                        </FormControl>
+                        <FormControl variant="outlined" style={styles.input}>
+                            {errors.additionalReview ? <p className="text-danger">{errors.additionalReview.message}</p> : ""}
+                            <InputLabel>{review.additionalReview}</InputLabel>
+                            <OutlinedInput type="textarea" name="additionalReview" value={review.additionalReview} onChange={onChangeHandler} />
+                        </FormControl>
+                        <Button type="submit" variant="contained" color="primary">Submit Edited Review</Button>
+                    </form>
+                </div>
+                <div className='edit-stadium-img'>
+                    {
+                        (review.stadium && review.stadium.stadiumImage) ? <img className="stadium-img" src={require(`../images/${review?.stadium?.stadiumImage}`)} alt="Stadium" /> : <p>Not finding</p>
+                    }
+                </div>
         </Paper>
         </div>
     )

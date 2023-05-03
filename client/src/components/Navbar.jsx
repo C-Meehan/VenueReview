@@ -6,6 +6,8 @@ import icon from '../images/stadium-icon.png'
 const Navbar = (props) => {
     
     const {user, setUser} = props
+    const [stadiumList, setStadiumList] = useState([]);
+
     const navigate = useNavigate();
     // const [user, setUser] = useState([])
 
@@ -40,6 +42,17 @@ const Navbar = (props) => {
             });
     }, []);
 
+    useEffect(() => {
+        axios.get('http://localhost:8000/api/stadiums')
+            .then(res => {
+                console.log(res.data);
+                setStadiumList(res.data);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, [])
+
 
     return (
         <div className="navbarr">
@@ -48,13 +61,26 @@ const Navbar = (props) => {
             <div className="nav-links">
                 <Link to={'/dashboard'} className="links">Home</Link>
                 <Link to={'/profile/' + user._id} className="links">Profile</Link>
-                <Link to={'/dashboard'} className="links">Stadiums</Link>
+                <div className='dropdown'>
+                    <Link to={'/dashboard'} className="links"><button className="dropbtn">Stadiums
+                        <i className='fa fa-caret-down'></i>
+                    </button></Link>
+                    <div className='dropdown-content'>
+                        {
+                        stadiumList.map((stadium, index) => (
+                            <div key={index}>
+                                <Link to={`/stadiums/${stadium._id}`}>{stadium.stadiumName}</Link>
+                            </div>
+                        ))
+                    }
+                    </div>
+                </div>
                 <button className="logout-btn" onClick={logout}>Logout</button>
             </div>
 
             <button className="btn__menu" onClick={openMenu}>
-                    <i className="fas fa-bars"></i>
-                </button>
+                <i className="fas fa-bars"></i>
+            </button>
                 <div className="menu__backdrop">
                     <button className="btn__menu btn__menu--close" onClick={closeMenu}>
                         <i className="fas fa-times"></i>

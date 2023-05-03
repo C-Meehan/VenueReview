@@ -48,7 +48,7 @@ module.exports.getReviewByStadium = (req, res) => {
 
 module.exports.getOneReview = (req, res) => {
     Review.findById(req.params.id)
-        .populate('stadium', 'stadiumName')
+        .populate('stadium', 'stadiumName stadiumImage')
         .then(review => res.json(review))
         .catch(err => res.json(err));
 }

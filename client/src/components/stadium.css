@@ -9,7 +9,6 @@
     display: flex;
     flex: 0 0 60%;
     max-width: 100%;
-    padding-right: 1rem;
     flex-direction: column;
     align-items: center;
     border-radius: 0.5rem;
@@ -24,8 +23,14 @@
     transition: box-shadow 300ms ease-in-out;
 }
 
-form {
+@media(max-width: 420px) {
+    .jang {
+        background-color: goldenrod;
+        width: 30%;
+    }
+}
 
+form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -50,6 +55,16 @@ form {
     flex: 0 0 30%;
     max-width: 30%;
     padding-left: 1rem;
+}
+
+@media(max-width: 510px) {
+    .review-form-container {
+        padding-left: 0px;
+    }
+
+    .reviewForm-title{
+        font-size: 1rem;
+    }
 }
 
 .review-box{
@@ -186,6 +201,28 @@ form {
     background-color: red;
     color: white;
     border: 1px solid red;
+}
+
+.edit-review-info {
+    width: 50%;
+    /* background-color: red; */
+}
+
+.edit-stadium-img {
+    width: 80%;
+    margin-left: .5rem;
+    padding: 25px;
+}
+
+@media(max-width:1000px) {
+    .edit-stadium-img {
+        display: none;
+        width: 0%;
+    }
+
+    .edit-review-info {
+        width: 100%;
+    }
 }
 
 @media(max-width: 700px) {
