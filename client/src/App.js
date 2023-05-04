@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard';
 import SingleStadium from './views/SingleStadium';
 import Profile from './components/Profile';
 import EditReview from './components/EditReview';
+import OthersProfile from './components/OthersProfile';
 // import Stadium from './components/Stadium';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path='/stadiums/:id' element={<SingleStadium/>}/>
           <Route path='/profile/:id' element={<Profile/>}/>
+          <Route path='/profile/others/:id' element={<OthersProfile/>}/>
           <Route path='/review/edit/:id' element={<EditReview/>}/>
         </Routes>
       </BrowserRouter>
