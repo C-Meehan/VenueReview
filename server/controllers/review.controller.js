@@ -38,6 +38,17 @@ module.exports.getReviewByUser = (req, res) => {
         .catch(err => res.json(err))
 }
 
+module.exports.getReviewByUserWithId = (req, res) => {
+    // const user = jwt.verify(req.cookies.userToken,SECRET);
+    // console.log(user)
+    // console.log(user._id)
+    Review.find({creator: req.params.id})
+        .populate('stadium', 'teamName stadiumName stadiumImage')
+        .populate('creator', 'firstName')
+        .then(review => res.json(review))
+        .catch(err => res.json(err))
+}
+
 module.exports.getReviewByStadium = (req, res) => {
     // const user = jwt.verify(req.cookies.userToken,SECRET);
     Review.find({stadium: req.params.id})

@@ -89,6 +89,6 @@ module.exports = {
     findOneUser: (req, res) => {
         User.findById(req.params.id)
             .then(user => res.json(user))
-            .catch(err => res.status(500).json({message: "Somethihng went wrong", error: err}));
+            .catch(err => res.status(500).json({message: "Something went wrong", error: err}));
     }
 }
