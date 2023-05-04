@@ -206,53 +206,46 @@ a:active {
   filter: invert(1);
 }
 
-/* The dropdown container */
 .dropdown {
-  float: left;
-  overflow: hidden;
+  position: relative;
+  display: inline-block;
 }
 
-/* Dropdown button */
-.dropdown .dropbtn {
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  outline: none;
-  color: white;
-  /* padding: 14px 16px; */
-  background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
-}
-
-/* Dropdown content (hidden by default) */
 .dropdown-content {
+  height: 300px;
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  background-color: white;
+  border-radius: 6px;
+  min-width: 200px;
   z-index: 1;
+  overflow-y: scroll;
 }
 
-/* Links inside the dropdown */
 .dropdown-content a {
-  float: none;
   color: black;
-  padding: 12px 16px;
-  text-decoration: none;
+  padding: 10px;
   display: block;
-  text-align: left;
 }
 
-/* Add a grey background color to dropdown links on hover */
+.dropdown:hover .dropdown-content{
+  display: block;
+}
+
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: #424E62;
+  color: white;
 }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
+.dropbtn {
+  background-color: transparent;
+  color: inherit;
+  font-weight: bold;
+  border: none;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logout-btn{
@@ -343,6 +336,16 @@ a:active {
 
 .btn__menu--close:hover {
   color: rgba(79, 38, 214, 1);
+}
+
+.menu__dropbtn {
+  display: block;
+  color: black;
+  font-size: 20px;
+  height: 40px;
+  padding: 4px;
+  text-transform: uppercase;
+  font-weight: normal;
 }
 
 .menu--open {

@@ -36,7 +36,7 @@ const SingleStadium = () => {
                 setStadium(res.data);
             })
             .catch(err => console.log(err))
-    }, [])
+    }, [id])
 
     return (
         <div>

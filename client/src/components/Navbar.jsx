@@ -62,7 +62,7 @@ const Navbar = (props) => {
                 <Link to={'/dashboard'} className="links">Home</Link>
                 <Link to={'/profile/' + user._id} className="links">Profile</Link>
                 <div className='dropdown'>
-                    <Link to={'/dashboard'} className="links"><button className="dropbtn">Stadiums
+                    <Link to={'/dashboard'} className="links"><button className="dropbtn">Stadiums 
                         <i className='fa fa-caret-down'></i>
                     </button></Link>
                     <div className='dropdown-content'>
@@ -88,7 +88,20 @@ const Navbar = (props) => {
                     <ul class="menu__links">
                         <li class="menu__list"><Link to={"/dashboard"} class="menu__link">Home</Link></li>
                         <li class="menu__list"><Link to={"/profile/" + user._id} class="menu__link" >Profile</Link></li>
-                        <li class="menu__list"><Link to={"/dashboard"} class="menu__link" >Stadiums</Link></li>
+                        <div className='dropdown'>
+                            <Link to={'/dashboard'} className="links"><button className="dropbtn menu__dropbtn">Stadiums 
+                                <i className='fa fa-caret-down'></i>
+                            </button></Link>
+                            <div className='dropdown-content'>
+                                {
+                                stadiumList.map((stadium, index) => (
+                                    <div key={index}>
+                                        <Link to={`/stadiums/${stadium._id}`}>{stadium.stadiumName}</Link>
+                                    </div>
+                                ))
+                            }
+                            </div>
+                        </div>
                         <li class="menu__list"><button className="menu-logout-btn" onClick={logout}>Logout</button></li>
                     </ul>
                 </div>

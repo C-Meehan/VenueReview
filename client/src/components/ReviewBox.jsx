@@ -25,7 +25,7 @@ const ReviewBox = (props) => {
                 setReviews(res.data);
             })
             .catch(err => console.log(err))
-    }, [])
+    }, [id])
 
     return (
         <div>
