@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
+const dbUsername = process.env.dbUsername
+const dbPassword = process.env.dbPassword
+const dbCluster = process.env.dbCluster
 
-mongoose.connect('mongodb://127.0.0.1:27017/venue_review', {
+mongoose.connect(`mongodb+srv://${dbUsername}:${dbPassword}@${dbCluster}.mongodb.net/VenueReview?retryWrites=true&w=majority
+`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
